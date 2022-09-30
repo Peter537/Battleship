@@ -7,6 +7,9 @@ public class BattleShip {
 
     private final Scanner scanner = new Scanner(System.in);
 
+    // TODO:
+    //  - Add so the computer first shoots when you press a button
+
     public BattleShip() {
         int mapSize = 10;
         map = new Grid[mapSize][mapSize];
@@ -71,19 +74,21 @@ public class BattleShip {
             String[] inputArray = input.split(" ");
             int x = Integer.parseInt(inputArray[0]);
             int y = Integer.parseInt(inputArray[1]);
-            if (computerMap[y][x].isCShip()) {
+            if (computerMap[y][x].isShip()) {
                 System.out.println("You hit a ship!");
                 computerShips--;
             } else {
                 System.out.println("You missed!");
             }
             computerMap[y][x].setShotAt();
+            System.out.println();
             System.out.println("COMPUTER MAP:");
+            System.out.println();
             printComputerMap();
-            //System.out.println("RAW MAP");
-            //printComputerRawMap();
-            System.out.println("Computer ships: " + computerShips);
-            System.out.println("Player ships: " + playerShips);
+            System.out.println();
+            System.out.println("RAW MAP: (for debugging)");
+            System.out.println();
+            printComputerRawMap();
             if (computerShips == 0) {
                 System.out.println("You win!");
                 break;
@@ -91,14 +96,16 @@ public class BattleShip {
             System.out.println("The computer is shooting at your ships.");
             int computerX = (int) (Math.random() * 10);
             int computerY = (int) (Math.random() * 10);
-            if (map[computerY][computerX].isPShip()) {
+            if (map[computerY][computerX].isShip()) {
                 System.out.println("The computer hit a ship!");
                 playerShips--;
             } else {
                 System.out.println("The computer missed!");
             }
             map[computerY][computerX].setShotAt();
+            System.out.println();
             System.out.println("PLAYER MAP:");
+            System.out.println();
             printMap();
             if (playerShips == 0) {
                 System.out.println("You lose!");
@@ -123,7 +130,7 @@ public class BattleShip {
         for (int i = 0; i < 5; i++) {
             int x = (int) (Math.random() * 10);
             int y = (int) (Math.random() * 10);
-            computerMap[y][x].setCShip();
+            computerMap[y][x].setShip();
         }
     }
 
@@ -144,7 +151,7 @@ public class BattleShip {
             System.out.print(i + " ");
             for (int j = 0; j < computerMap[i].length; j++) {
                 if (computerMap[i][j].isShotAt()) {
-                    System.out.print((computerMap[i][j].isCShip() ? "H" : "M") + " ");
+                    System.out.print((computerMap[i][j].isShip() ? "H" : "M") + " ");
                 } else {
                     System.out.print("- ");
                 }
@@ -154,9 +161,6 @@ public class BattleShip {
     }
 
 
-    public Grid[][] getMap() {
-        return map;
-    }
 
     public void clearScreen() {
         System.out.println(System.lineSeparator().repeat(50));
