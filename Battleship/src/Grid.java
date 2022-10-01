@@ -19,7 +19,6 @@ public class Grid {
         state = 'S';
     }
 
-
     public void setShotAt() {
         shotAt = true;
         state = 'X';
