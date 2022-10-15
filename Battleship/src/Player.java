@@ -7,14 +7,13 @@ public class Player {
 
     public Player(int mapSize) {
         this.mapSize = mapSize;
-        map = new Grid[mapSize][mapSize];
+        this.map = new Grid[mapSize][mapSize];
         for (int i = 0; i < map.length; i++) {
             for (int j = 0; j < map[i].length; j++) {
                 map[i][j] = new Grid();
             }
         }
     }
-
 
     public void placeShips(TextUI textUI, int ships) {
         for (int i = 0; i < ships; i++) {
@@ -39,14 +38,12 @@ public class Player {
         }
     }
 
-
-
     public void printRawMap() {
         System.out.println("  0 1 2 3 4");
         for (int i = 0; i < map.length; i++) {
             System.out.print(i + " ");
             for (int j = 0; j < map[i].length; j++) {
-                System.out.print(map[i][j].getState() + " ");
+                System.out.print(map[i][j].getRawState() + " ");
             }
             System.out.println();
         }
@@ -58,7 +55,7 @@ public class Player {
             System.out.print(i + " ");
             for (int j = 0; j < map[i].length; j++) {
                 if (map[i][j].isShotAt()) {
-                    System.out.print((map[i][j].isShip() ? "H" : "M") + " ");
+                    System.out.print(map[i][j].getState() + " ");
                 } else {
                     System.out.print("- ");
                 }
@@ -66,8 +63,6 @@ public class Player {
             System.out.println();
         }
     }
-
-
 
     public boolean hasShipsLeft() {
         for (Grid[] grids : map) {
@@ -78,10 +73,6 @@ public class Player {
             }
         }
         return false;
-    }
-
-    public Grid[][] getMap() {
-        return map;
     }
 
     public void makeMove(TextUI textUI, Player enemy) {
@@ -105,7 +96,11 @@ public class Player {
         }
     }
 
-    public int getMapSize() {
+    public Grid[][] getMap() {
+        return map;
+    }
+
+    protected int getMapSize() {
         return mapSize;
     }
 }
