@@ -14,9 +14,9 @@ public class BattleShip {
     //  - Save TextUI to Player class and use the variable instead of passing it to methods & not use System.out.println
 
     public BattleShip() {
-        player = new Player(mapSize);
-        computer = new Computer(mapSize);
         textUI = new TextUI();
+        player = new Player(mapSize, textUI);
+        computer = new Computer(mapSize, textUI);
     }
 
     public void start() {
@@ -32,7 +32,7 @@ public class BattleShip {
         computer.generateShips(ships);
 
         while (true) {
-            player.makeMove(textUI, computer);
+            player.makeMove(computer);
             if (!computer.hasShipsLeft()) {
                 textUI.clearScreen();
                 textUI.print("");

@@ -1,12 +1,12 @@
-import java.util.Scanner;
-
 public class Player {
 
     private final Grid[][] map;
     private final int mapSize;
+    private final TextUI textUI;
 
-    public Player(int mapSize) {
+    public Player(int mapSize, TextUI textUI) {
         this.mapSize = mapSize;
+        this.textUI = textUI;
         this.map = new Grid[mapSize][mapSize];
         for (int i = 0; i < map.length; i++) {
             for (int j = 0; j < map[i].length; j++) {
@@ -75,7 +75,7 @@ public class Player {
         return false;
     }
 
-    public void makeMove(TextUI textUI, Player enemy) {
+    public void makeMove(Player enemy) {
         textUI.clearScreen();
         enemy.printMap();
         textUI.print("Make a shot");
@@ -85,14 +85,14 @@ public class Player {
             if (enemy.getMap()[y][x].isShotAt()) {
                 textUI.print("You already shot there");
                 textUI.getUserInput("Press enter to continue");
-                makeMove(textUI, enemy);
+                makeMove(enemy);
             } else {
                 enemy.getMap()[y][x].setShotAt();
             }
         } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
             textUI.print("Invalid input");
             textUI.getUserInput("Press enter to continue");
-            makeMove(textUI, enemy);
+            makeMove(enemy);
         }
     }
 
@@ -102,5 +102,9 @@ public class Player {
 
     protected int getMapSize() {
         return mapSize;
+    }
+
+    public TextUI getTextUI() {
+        return textUI;
     }
 }

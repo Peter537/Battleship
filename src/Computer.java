@@ -4,8 +4,8 @@ public class Computer extends Player {
 
     private final Random random = new Random();
 
-    public Computer(int mapSize) {
-        super(mapSize);
+    public Computer(int mapSize, TextUI textUI) {
+        super(mapSize, textUI);
     }
 
     public void generateShips(int ships) {
@@ -20,6 +20,7 @@ public class Computer extends Player {
         }
     }
 
+    @Override
     public void makeMove(Player player) {
         int x = random.nextInt(getMapSize());
         int y = random.nextInt(getMapSize());
