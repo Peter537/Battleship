@@ -16,10 +16,6 @@ public class TextUI {
         return scanner.nextLine();
     }
 
-    public String getUserInput() {
-        return scanner.nextLine();
-    }
-
     public void print(String s) {
         System.out.println(s);
     }
@@ -34,8 +30,6 @@ public class TextUI {
         return sb.toString();
     }
 
-
-
     public String getPlaceShipText() {
         StringBuilder sb = new StringBuilder();
         sb.append("You will now place your ships.\n");
@@ -47,19 +41,7 @@ public class TextUI {
         return sb.toString();
     }
 
-    public String getGameText() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("You will now shoot at the computer's ships.\n");
-        sb.append("Please type in X and Y coordinates for each shot.\n");
-        sb.append("The X and Y coordinates must be between 0 and 9.\n");
-        sb.append("The X and Y coordinates must be separated by a space.\n");
-        sb.append("For example, to shoot at (3, 4), type in 3 4.\n");
-        return sb.toString();
-    }
-
-
     public void clearScreen() {
         System.out.println(System.lineSeparator().repeat(50));
     }
-
 }
