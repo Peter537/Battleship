@@ -11,7 +11,6 @@ public class BattleShip {
     // TODO:
     //  - Add so the computer first shoots when you press a button
     //  - Change method names to be more descriptive
-    //  - Save TextUI to Player class and use the variable instead of passing it to methods & not use System.out.println
 
     public BattleShip() {
         textUI = new TextUI();
