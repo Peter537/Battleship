@@ -15,7 +15,7 @@ public class Player {
         }
     }
 
-    public void placeShips(TextUI textUI, int ships) {
+    public void placeShips(int ships) {
         for (int i = 0; i < ships; i++) {
             textUI.clearScreen();
             this.printRawMap();

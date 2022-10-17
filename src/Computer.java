@@ -8,7 +8,8 @@ public class Computer extends Player {
         super(mapSize, textUI);
     }
 
-    public void generateShips(int ships) {
+    @Override
+    public void placeShips(int ships) {
         for (int i = 0; i < ships; i++) {
             int x = random.nextInt(getMapSize());
             int y = random.nextInt(getMapSize());

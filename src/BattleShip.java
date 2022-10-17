@@ -27,8 +27,8 @@ public class BattleShip {
 
         textUI.clearScreen();
         textUI.print(textUI.getPlaceShipText());
-        player.placeShips(textUI, ships);
-        computer.generateShips(ships);
+        player.placeShips(ships);
+        computer.placeShips(ships);
 
         while (true) {
             player.makeMove(computer);
